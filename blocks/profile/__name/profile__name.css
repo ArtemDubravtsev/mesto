@@ -1,3 +1,4 @@
 .profile__name {
-    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
 }
