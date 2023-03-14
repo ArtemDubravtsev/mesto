@@ -1,0 +1,8 @@
+.popup__container {
+    max-width: 470px;
+    width: 100%;
+    min-height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
