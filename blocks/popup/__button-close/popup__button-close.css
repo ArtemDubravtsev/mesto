@@ -9,3 +9,15 @@
     padding: 0;
     align-self: flex-end;
 }
+
+.popup__button-close:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__button-close {
+        width: 20px;
+        height: 20px;
+        background-image: url(../../../images/Close\ Icon\ 320.svg);
+    }
+}
