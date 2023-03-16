@@ -12,17 +12,16 @@
     <div class="page">
         <header class="header">
             <img class="header__logo" src="images/logo.svg" alt="Логотип Место">
-            <div class="header__line"></div>
         </header>
         <main>
             <section class="profile">
-                <img class="profile__avatar" src="images/Avatar.svg" alt="Аватар">
+                <img class="profile__avatar" src="images/Avatar.png" alt="Аватар">
                 <div class="profile__info">
                     <div class="profile__name">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <p class="profile__subtitle">Исследователь океана</p>
+                        <button type="button" class="profile__button-edit"></button>
                     </div>
-                    <button type="button" class="profile__button-edit"></button>
+                    <p class="profile__subtitle">Исследователь океана</p>
                 </div>
                 <button type="button" class="profile__button-add"></button>
             </section>
@@ -83,18 +82,22 @@
         <section class="popup">
             <div class="popup__container">
                 <button type="button" class="popup__button-close"></button>
-                <form class="popup__form">
+                <div class="popup__window">
                     <h2 class="popup__heading">Редактировать профиль</h2>
-                    <fieldset class="popup__form-info">
-                        <input type="text" class="popup__form-item popup__form-item_name" value="Жак-Ив Кусто" required>
-                        <input type="text" class="popup__form-item popup__form-item_job" value="Исследователь океана"
-                            required>
-                    </fieldset>
-                    <button type="submit" class="popup__button-save">Сохранить</button>
-                </form>
+                    <form class="popup__form" name="popup-edit">
+                        <fieldset class="popup__form-info">
+                            <input type="text" class="popup__form-item popup__form-item_line_name" name="popup-name"
+                                value="Жак-Ив Кусто" required>
+                            <input type="text" class="popup__form-item popup__form-item_line_job" name="popup-job"
+                                value="Исследователь океана" required>
+                        </fieldset>
+                        <button type="submit" class="popup__button-save">Сохранить</button>
+                    </form>
+                </div>
             </div>
         </section>
     </div>
     <script src="scripts/index.js"></script>
 </body>
+
 </html>
