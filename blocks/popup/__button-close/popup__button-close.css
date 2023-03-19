@@ -9,6 +9,9 @@
     padding: 0;
     align-self: flex-end;
     cursor: pointer;
+    position: absolute;
+    top: -40px;
+    right: -40px;
 }
 
 .popup__button-close:hover {
@@ -20,5 +23,7 @@
         width: 20px;
         height: 20px;
         background-image: url(../../../images/Close\ Icon\ 320.svg);
+        top: -36px;
+        right: 0;
     }
 }
