@@ -28,3 +28,47 @@ const handleFormSubmit = function (evt) {
 popupOpenBottonElement.addEventListener('click', openPopup);
 popupCloseBottonElement.addEventListener('click', closePopup);
 formElement.addEventListener('submit', handleFormSubmit);
+
+
+
+const initialCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
+const elements = document.querySelector('.elements');
+const elementsTemplate = document.querySelector('.elements_template').content;
+
+initialCards.forEach(renderElement);
+
+function renderElement(item) {
+    const htmlElement = elementsTemplate.cloneNode(true);
+    htmlElement.querySelector('.elements__item-title').textContent = item;
+    const elementImage = htmlElement.querySelector('.elements__item-image');
+    const elementText = htmlElement.querySelector('.elements__item-title');
+    elementText.textContent = item.name;
+    elementImage.src = item.link;
+    elementImage.alt = item.name;
+    elements.append(htmlElement);
+}
