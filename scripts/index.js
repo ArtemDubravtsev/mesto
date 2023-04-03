@@ -1,3 +1,31 @@
+// Cards
+const initialCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
+
 // popups
 const popupElement = document.querySelector('.popup');
 const popupAdd = document.querySelector('.popup_add');
@@ -26,41 +54,15 @@ const imageTitleInput = document.querySelector('.popup__form-item_line_title');
 const imageLinkInput = document.querySelector('.popup__form-item_line_link');
 const formElementAdd = document.querySelector('.popup__form_add');
 
-// Cards
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-const elements = document.querySelector('.elements');
-const elementsTemplate = document.querySelector('.elements_template').content;
-
 // popup Image
 const popupImage = document.querySelector('.popup_image');
 const popupImageBottonClose = document.querySelector('.popup__button-close_image');
 const popupImageTitle = document.querySelector('.popup__image-title');
 const popupImageFoto = document.querySelector('.popup__image-foto');
+const elements = document.querySelector('.elements');
+const elementsTemplate = document.querySelector('.elements_template').content;
+
+
 
 
 
@@ -81,16 +83,6 @@ const handleFormSubmit = function (evt) {
     jobSubtitle.textContent = jobInput.value;
     togglePopup(popupElement);
 }
-
-popupOpenBottonElement.addEventListener('click', function () { togglePopup(popupElement) }, formOpenPopup())
-popupAddOpenButton.addEventListener('click', function () { togglePopup(popupAdd) })
-popupCloseBottonElement.addEventListener('click', function () { togglePopup(popupElement) })
-popupAddCloseButton.addEventListener('click', function () { togglePopup(popupAdd) })
-formElement.addEventListener('submit', handleFormSubmit)
-popupImageBottonClose.addEventListener('click', function () { togglePopup(popupImage) })
-
-
-
 
 function createCard(data) {
     const cardElement = elementsTemplate.cloneNode(true);
@@ -126,16 +118,18 @@ function handleDelete(event) {
 function handleLike(event) {
     event.target.classList.toggle('elements__item-like_active');
 }
-
-
-
-
-function submitAddCardForm(event) {
-    // evt.preventDefault();
-    // const item = {name: imageTitleInput.value, link: imageLinkInput.value};
-    // renderElement(item, elements);
-    console.log('AAA');
+// popup add func
+function submitAddCardForm(evt) {
+    evt.preventDefault();
+    const data = { name: imageTitleInput.value, link: imageLinkInput.value };
+    renderCard(data, elements);
+    togglePopup(popupAdd)
 }
 
+popupOpenBottonElement.addEventListener('click', function () { togglePopup(popupElement) }, formOpenPopup())
+popupAddOpenButton.addEventListener('click', function () { togglePopup(popupAdd) })
+popupCloseBottonElement.addEventListener('click', function () { togglePopup(popupElement) })
+popupAddCloseButton.addEventListener('click', function () { togglePopup(popupAdd) })
+popupImageBottonClose.addEventListener('click', function () { togglePopup(popupImage) })
+formElement.addEventListener('submit', handleFormSubmit)
 formElementAdd.addEventListener('submit', submitAddCardForm)
-
