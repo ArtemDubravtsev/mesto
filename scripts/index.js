@@ -143,3 +143,4 @@ formElementAdd.addEventListener('submit', submitAddCardForm)
 
 // popup image
 popupImageBottonClose.addEventListener('click', function () { closePopup(popupImage) })
+
