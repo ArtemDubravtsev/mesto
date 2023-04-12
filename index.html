@@ -30,71 +30,40 @@
         <footer class="footer">
             <p class="footer__copyright">© 2023 Mesto Russia</p>
         </footer>
-
-
-
         <section class="popup popup_edit">
             <div class="popup__container">
                 <button type="button" class="popup__button-close"></button>
                 <h2 class="popup__heading">Редактировать профиль</h2>
                 <form class="popup__form" name="popup-edit" novalidate>
                     <fieldset class="popup__form-info">
-                        <input 
-                        type="text" 
-                        class="popup__form-item popup__form-item_line_name" 
-                        name="name"
-                        value=""
-                        placeholder="Введите имя" 
-                        minlength="2" 
-                        maxlength="40" 
-                        required>
+                        <input type="text" class="popup__form-item popup__form-item_line_name" name="name" value=""
+                            placeholder="Введите имя" minlength="2" maxlength="40" required>
                         <span class="popup__error popup__error_type_name"></span>
-                        <input 
-                        type="text" 
-                        class="popup__form-item popup__form-item_line_job" 
-                        name="job" 
-                        value=""
-                        placeholder="Расскажите о себе" 
-                        minlength="2" 
-                        maxlength="200" 
-                        required>
+                        <input type="text" class="popup__form-item popup__form-item_line_job" name="job" value=""
+                            placeholder="Расскажите о себе" minlength="2" maxlength="200" required>
                         <span class="popup__error popup__error_type_job"></span>
                     </fieldset>
                     <button type="submit" class="popup__button-save">Сохранить</button>
                 </form>
             </div>
         </section>
-
         <section class="popup popup_add">
             <div class="popup__container">
                 <button type="button" class="popup__button-close popup__button-close_add"></button>
                 <h2 class="popup__heading">Новое место</h2>
                 <form class="popup__form popup__form_add" name="popup-add" novalidate>
                     <fieldset class="popup__form-info">
-                        <input 
-                        type="text" 
-                        class="popup__form-item popup__form-item_line_title" 
-                        name="title"
-                        value="" 
-                        placeholder="Название" 
-                        minlength="2" 
-                        maxlength="30" 
-                        required>
+                        <input type="text" class="popup__form-item popup__form-item_line_title" name="title" value=""
+                            placeholder="Название" minlength="2" maxlength="30" required>
                         <span class="popup__error popup__error_type_title"></span>
-                        <input 
-                        type="url" 
-                        class="popup__form-item popup__form-item_line_link" 
-                        name="link" 
-                        value=""
-                        placeholder="Ссылка на картинку" 
-                        required>
+                        <input type="url" class="popup__form-item popup__form-item_line_link" name="link" value=""
+                            placeholder="Ссылка на картинку" required>
                         <span class="popup__error popup__error_type_link"></span>
                     </fieldset>
                     <button type="submit" class="popup__button-save">Создать</button>
                 </form>
             </div>
         </section>
-
         <section class="popup popup_image">
             <div class="popup__image-container">
                 <button type="button" class="popup__button-close popup__button-close_image"></button>

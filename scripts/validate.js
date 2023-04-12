@@ -6,25 +6,24 @@ const validationConfig = {
     errorSpanSelector: '.popup__error_type_',            // Спан с текстом ошибки импута
     inactiveButtonClass: 'popup__button-save_invalid',   // Модификатор не активной кнопки 
     inputErrorClass: 'popup__form-item_error',           // Модификатор Красной полосы импута 
-    errorClass: 'popup__error_active'                    // Модификатор видимости текста валидации
+    errorClass: 'popup__error_active'                    // Модификатор видимости ошибки ввода текста
 }
 
-enableValidation(validationConfig);
 
-function enableValidation(config) {
-    const forms = Array.from(config.allForms);
+function enableValidation({ allForms, inputSelector, submitButtonSelector, ...rest }) {
+    const forms = Array.from(allForms);
     forms.forEach((form) => {
-        const formInputs = form.querySelectorAll(config.inputSelector);
-        const formButtom = form.querySelector(config.submitButtonSelector);
-        setEventListener(formInputs, formButtom, config.inactiveButtonClass, config.inputErrorClass, config.errorSpanSelector, config.errorClass);
+        const formInputs = form.querySelectorAll(inputSelector);
+        const formButtom = form.querySelector(submitButtonSelector);
+        setEventListener(formInputs, formButtom, rest);
     })
 }
 
-function setEventListener(formInputs, formButtom, inactiveButtonClass, inputErrorClass, errorSpanSelector, errorClass) {
+function setEventListener(formInputs, formButtom, rest) {
     formInputs.forEach((input) => {
         input.addEventListener('input', () => {
-            checkInputValidity(input, errorSpanSelector, inputErrorClass, errorClass);
-            toggleButtonState(formInputs, formButtom, inactiveButtonClass)
+            checkInputValidity(input, rest.errorSpanSelector, rest.inputErrorClass, rest.errorClass);
+            toggleButtonState(formInputs, formButtom, rest.inactiveButtonClass);
         })
     })
 }
@@ -59,7 +58,7 @@ function toggleButtonState(formInputs, formButtom, inactiveButtonClass) {
 }
 
 function hasValidInput(formInputs) {
-    return Array.from(formInputs).every((input) => input.validity.valid)
+    return Array.from(formInputs).every((input) => input.validity.valid);
 }
 
 function enableButton(formButtom, inactiveButtonClass) {
@@ -72,18 +71,14 @@ function disableButton(formButtom, inactiveButtonClass) {
     formButtom.disabled = true;
 }
 
-// function resetErrorOpenForm(form) {
-//     form.querySelectorAll(validationConfig.inputSelector).forEach((input) => {
-//         const errorTextElement = document.querySelector(`${validationConfig.errorSpanSelector}${input.name}`);
-//         if (!input.validity.valid) {
-//             removeImputError(input, errorTextElement, validationConfig.inputErrorClass, validationConfig.errorClass)
-//         }
-//     })
-// }
+function resetErrorOpenForm(form) {
+    form.querySelectorAll(validationConfig.inputSelector).forEach((input) => {
+        const errorTextElement = document.querySelector(`${validationConfig.errorSpanSelector}${input.name}`);
+        if (!input.validity.valid) {
+            removeImputError(input, errorTextElement, validationConfig.inputErrorClass, validationConfig.errorClass);
+        }
+    })
+}
 
 
-
-
-
-
-// console.log()
+enableValidation(validationConfig);
