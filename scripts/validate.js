@@ -1,4 +1,3 @@
-// Объект для валидации 
 const validationConfig = {
     allForms: document.forms,                            // все формы
     inputSelector: '.popup__form-item',                  // все импуты
