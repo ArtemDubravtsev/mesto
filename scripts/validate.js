@@ -13,16 +13,16 @@ function enableValidation({ allForms, inputSelector, submitButtonSelector, ...re
     const forms = Array.from(allForms);
     forms.forEach((form) => {
         const formInputs = form.querySelectorAll(inputSelector);
-        const formButtom = form.querySelector(submitButtonSelector);
-        setEventListener(formInputs, formButtom, rest);
+        const formButton = form.querySelector(submitButtonSelector);
+        setEventListener(formInputs, formButton, rest);
     })
 }
 
-function setEventListener(formInputs, formButtom, rest) {
+function setEventListener(formInputs, formButton, rest) {
     formInputs.forEach((input) => {
         input.addEventListener('input', () => {
             checkInputValidity(input, rest.errorSpanSelector, rest.inputErrorClass, rest.errorClass);
-            toggleButtonState(formInputs, formButtom, rest.inactiveButtonClass);
+            toggleButtonState(formInputs, formButton, rest.inactiveButtonClass);
         })
     })
 }
@@ -48,11 +48,11 @@ function showImputError(input, errorTextElement, inputErrorClass, errorClass) {
     errorTextElement.classList.add(errorClass);
 }
 
-function toggleButtonState(formInputs, formButtom, inactiveButtonClass) {
+function toggleButtonState(formInputs, formButton, inactiveButtonClass) {
     if (hasValidInput(formInputs)) {
-        enableButton(formButtom, inactiveButtonClass);
+        enableButton(formButton, inactiveButtonClass);
     } else {
-        disableButton(formButtom, inactiveButtonClass);
+        disableButton(formButton, inactiveButtonClass);
     }
 }
 
@@ -60,17 +60,17 @@ function hasValidInput(formInputs) {
     return Array.from(formInputs).every((input) => input.validity.valid);
 }
 
-function enableButton(formButtom, inactiveButtonClass) {
-    formButtom.classList.remove(inactiveButtonClass);
-    formButtom.disabled = false;
+function enableButton(formButton, inactiveButtonClass) {
+    formButton.classList.remove(inactiveButtonClass);
+    formButton.disabled = false;
 }
 
-function disableButton(formButtom, inactiveButtonClass) {
-    formButtom.classList.add(inactiveButtonClass);
-    formButtom.disabled = true;
+function disableButton(formButton, inactiveButtonClass) {
+    formButton.classList.add(inactiveButtonClass);
+    formButton.disabled = true;
 }
 
-function resetErrorOpenForm(form) {
+function resetErrorOpenForm(form, validationConfig) {
     form.querySelectorAll(validationConfig.inputSelector).forEach((input) => {
         const errorTextElement = document.querySelector(`${validationConfig.errorSpanSelector}${input.name}`);
         if (!input.validity.valid) {
