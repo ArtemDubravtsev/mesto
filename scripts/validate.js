@@ -80,4 +80,4 @@ function resetErrorOpenForm(form, validationConfig) {
 }
 
 
-enableValidation(validationConfig);
+// enableValidation(validationConfig);
