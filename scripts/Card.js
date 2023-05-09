@@ -1,3 +1,4 @@
+// Класс создания карточек
 class Card {
     constructor(data, templateSelector, openPopupImage) {
         this._data = data;
