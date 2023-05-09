@@ -110,7 +110,7 @@ const handlePopupProfileFormSubmit = function (evt) {
 
 function openPopupImage(data) {
     popupImageFoto.src = data.link;
-    popupImageFoto.alt = "Изображение карточки";
+    popupImageFoto.alt = data.name;
     popupImageTitle.textContent = data.name;
     openPopup(popupImage);
 }
