@@ -3,7 +3,7 @@ class Card {
     constructor(data, templateSelector, openPopupImage) {
         this._data = data;
         this._link = data.link;
-        this._name = data.name;
+        this._name = data.title;
         this._templateSelector = templateSelector;
         this._openPopupImage = openPopupImage;
     }
