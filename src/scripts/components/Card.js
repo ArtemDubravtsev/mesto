@@ -2,7 +2,6 @@
 class Card {
     constructor(data, templateSelector, openPopupImage) {
         this._data = data;
-        this._link = data.link;
         this._name = data.title;
         this._templateSelector = templateSelector;
         this._openPopupImage = openPopupImage;
@@ -17,7 +16,7 @@ class Card {
     }
 
     _handleDelete = () => {
-        this._deleteElement.closest('.elements__item').remove();
+        this._cloneElement.remove();
     }
 
     _handleLike = () => {
@@ -36,7 +35,7 @@ class Card {
         this._likeElement = this._cloneElement.querySelector('.elements__item-like');
         this._deleteElement = this._cloneElement.querySelector('.elements__item-delete');
         this._titleElement = this._cloneElement.querySelector('.elements__item-title');
-        this._imageElement.src = this._link;
+        this._imageElement.src = this._data.link;
         this._imageElement.alt = this._name;
         this._titleElement.textContent = this._name;
         this._setEventListener();

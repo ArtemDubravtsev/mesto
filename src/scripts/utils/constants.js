@@ -51,8 +51,8 @@ const popupImageSelector = '.popup_image';
 const elementSelector = '.elements';
 
 const profileInfo = {
-    profileName: '.profile__title',
-    profileJob: '.profile__subtitle'
+    profileNameSelector: '.profile__title',
+    profileJobSelector: '.profile__subtitle'
 }
 
 export {

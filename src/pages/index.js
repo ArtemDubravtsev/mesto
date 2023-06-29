@@ -30,20 +30,18 @@ const section = new Section({
         return card.сreateCard();
     }
 }, elementSelector);
-section.addCard();
+section.addInitialItems();
 
 const userInfo = new UserInfo(profileInfo)
 
 const popupProfil = new PopupWithForm(popupEditProfileSelector, (evt) => {
-    evt.preventDefault();
-    userInfo.setUserInfo(popupProfil.getInputValues());
+    userInfo.setUserInfo(popupProfil._getInputValues());
     popupProfil.close();
 });
 popupProfil.setEventListeners();
 
 const popupAddCard = new PopupWithForm(popupAddCardSelector, (evt) => {
-    evt.preventDefault();
-    section.addItem(section.renderer(popupAddCard.getInputValues()));
+    section.addItem(section.renderer(popupAddCard._getInputValues()));
     popupAddCard.close();
 });
 popupAddCard.setEventListeners();
@@ -57,13 +55,13 @@ formAddCardValidation.enableValidation();
 
 // Слушатель попапа информаций
 popupOpenBottonElement.addEventListener('click', () => {
-    formDataValidation.resetErrorOpenForm();
+    formDataValidation.resetValidationState();
     popupProfil.setInputValues(userInfo.getUserInfo());
     popupProfil.open();
 });
 
 // слушатели попапа добавления картинки
 popupAddOpenButton.addEventListener('click', () => {
-    formAddCardValidation.resetErrorOpenForm();
+    formAddCardValidation.resetValidationState();
     popupAddCard.open();
 });

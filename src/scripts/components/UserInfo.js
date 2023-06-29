@@ -1,15 +1,15 @@
 export default class UserInfo {
     constructor(profileInfo) {
-        this._profileName = document.querySelector(profileInfo.profileName);
-        this._profileJob = document.querySelector(profileInfo.profileJob);
+        this._profileNameSelector = document.querySelector(profileInfo.profileNameSelector);
+        this._profileJobSelector = document.querySelector(profileInfo.profileJobSelector);
     }
 
     getUserInfo() {
-        return { name: this._profileName.textContent, job: this._profileJob.textContent }
+        return { name: this._profileNameSelector.textContent, job: this._profileJobSelector.textContent }
     }
 
     setUserInfo(data) {
-        this._profileName.textContent = data.name;
-        this._profileJob.textContent = data.job;
+        this._profileNameSelector.textContent = data.name;
+        this._profileJobSelector.textContent = data.job;
     }
 }

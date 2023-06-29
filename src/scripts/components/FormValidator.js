@@ -37,7 +37,7 @@ class FormValidator {
         if (this._hasValidInput()) {
             this._enableButton();
         } else {
-            this._disableButton(this._button);
+            this._disableButton();
         }
     }
 
@@ -64,7 +64,7 @@ class FormValidator {
         })
     }
 
-    resetErrorOpenForm() {
+    resetValidationState() {
         this._inputList.forEach(input => {
             const errorTextElement = this._form.querySelector(`${this._errorSpanSelector}${input.name}`);
             if (!input.validity.valid) {
