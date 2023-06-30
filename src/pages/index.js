@@ -34,14 +34,14 @@ section.addInitialItems();
 
 const userInfo = new UserInfo(profileInfo)
 
-const popupProfil = new PopupWithForm(popupEditProfileSelector, (evt) => {
-    userInfo.setUserInfo(popupProfil._getInputValues());
+const popupProfil = new PopupWithForm(popupEditProfileSelector, inputValues => {
+    userInfo.setUserInfo(inputValues);
     popupProfil.close();
 });
 popupProfil.setEventListeners();
 
-const popupAddCard = new PopupWithForm(popupAddCardSelector, (evt) => {
-    section.addItem(section.renderer(popupAddCard._getInputValues()));
+const popupAddCard = new PopupWithForm(popupAddCardSelector, inputValues => {
+    section.addItem(section.renderer(inputValues));
     popupAddCard.close();
 });
 popupAddCard.setEventListeners();

@@ -2,7 +2,6 @@
 class Card {
     constructor(data, templateSelector, openPopupImage) {
         this._data = data;
-        this._name = data.title;
         this._templateSelector = templateSelector;
         this._openPopupImage = openPopupImage;
     }
@@ -36,8 +35,8 @@ class Card {
         this._deleteElement = this._cloneElement.querySelector('.elements__item-delete');
         this._titleElement = this._cloneElement.querySelector('.elements__item-title');
         this._imageElement.src = this._data.link;
-        this._imageElement.alt = this._name;
-        this._titleElement.textContent = this._name;
+        this._imageElement.alt = this._data.title;
+        this._titleElement.textContent = this._data.title;
         this._setEventListener();
         return this._cloneElement;
     }
