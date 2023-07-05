@@ -14,7 +14,7 @@
         </header>
         <main>
             <section class="profile">
-                <img class="profile__avatar" src="<%=require("./images/Avatar.png")%>" alt="Аватар">
+                <button type="button" class="popup__avatar-button"><img class="profile__avatar" src="<%=require("./images/Avatar.png")%>" alt="Аватар"></button>
                 <div class="profile__info">
                     <div class="profile__name">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -56,7 +56,7 @@
                             placeholder="Название" minlength="2" maxlength="30" required>
                         <span class="popup__error popup__error_type_title"></span>
                         <input type="url" class="popup__form-item popup__form-item_line_link" name="link" value=""
-                            placeholder="Ссылка на картинку" required>
+                            placeholder="Ссылка на изображение" required>
                         <span class="popup__error popup__error_type_link"></span>
                     </fieldset>
                     <button type="submit" class="popup__button-save">Создать</button>
@@ -68,6 +68,29 @@
                 <button type="button" class="popup__button-close popup__button-close_image"></button>
                 <img class="popup__image-foto" alt="">
                 <h2 class="popup__image-title"></h2>
+            </div>
+        </section>
+        <section class="popup popup_avatar">
+            <div class="popup__container">
+                <button type="button" class="popup__button-close popup__button-close_avatar"></button>
+                <h2 class="popup__heading">Обновить аватар</h2>
+                <form class="popup__form popup__form_avatar" name="popup-avatar" novalidate>
+                    <fieldset class="popup__form-info">
+                        <input type="url" class="popup__form-item popup__form-item_line_link" name="avatar" value=""
+                            placeholder="Ссылка на изображение" required>
+                        <span class="popup__error popup__error_type_avatar"></span>
+                    </fieldset>
+                    <button type="submit" class="popup__button-save">Сохранить</button>
+                </form>
+            </div>
+        </section>
+        <section class="popup popup_delete">
+            <div class="popup__container">
+                <button type="button" class="popup__button-close popup__button-close_delete"></button>
+                <h2 class="popup__heading">Вы уверены?</h2>
+                <form class="popup__form popup__form_delete" name="popup-delete" novalidate>
+                    <button type="submit" class="popup__button-save">Да</button>
+                </form>
             </div>
         </section>
     </div>

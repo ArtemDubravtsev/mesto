@@ -1,9 +1,10 @@
 // Класс создания карточек
 class Card {
-    constructor(data, templateSelector, openPopupImage) {
+    constructor(data, templateSelector, openPopupImage, openPopupDeleteCard) {
         this._data = data;
         this._templateSelector = templateSelector;
         this._openPopupImage = openPopupImage;
+        this._openPopupDeleteCard = openPopupDeleteCard;
     }
 
     _сreateTemplateClone() {
@@ -15,6 +16,10 @@ class Card {
     }
 
     _handleDelete = () => {
+        this._openPopupDeleteCard(this);
+    }
+
+    deleteCard() {
         this._cloneElement.remove();
     }
 
