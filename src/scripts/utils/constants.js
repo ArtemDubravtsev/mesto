@@ -56,7 +56,8 @@ const formPopupAvatarSelector = document.querySelector('.popup__form_avatar');
 
 const profileInfo = {
     profileNameSelector: '.profile__title',
-    profileJobSelector: '.profile__subtitle'
+    profileJobSelector: '.profile__subtitle',
+    profileAvatarSelector: '.profile__avatar'
 }
 
 export {
