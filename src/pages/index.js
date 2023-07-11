@@ -1,12 +1,12 @@
 import './index.css';
-import Card from '../scripts/components/Card.js';
-import FormValidator from '../scripts/components/FormValidator.js';
-import PopupWithImage from '../scripts/components/PopupWithImage.js';
-import Section from '../scripts/components/Section.js';
-import UserInfo from '../scripts/components/UserInfo.js';
-import PopupWithForm from '../scripts/components/PopupWithForm.js';
-import PopupCardDelete from '../scripts/components/PopupCardDelete';
-import Api from '../scripts/components/Api';
+import Card from '../../src/components/Card.js';
+import FormValidator from '../../src/components/FormValidator.js';
+import PopupWithImage from '../../src/components/PopupWithImage.js';
+import Section from '../../src/components/Section.js';
+import UserInfo from '../../src/components/UserInfo.js';
+import PopupWithForm from '../../src/components/PopupWithForm.js';
+import PopupCardDelete from '../../src/components/PopupCardDelete';
+import Api from '../../src/components/Api';
 import {
     initialCards,
     validationConfig,
@@ -20,11 +20,11 @@ import {
     popupAddCardSelector,
     popupImageSelector,
     elementSelector,
-    PopupCardDeleteSelector,
+    popupCardDeleteSelector,
     popupAvatarSelector,
     formPopupAvatarSelector,
     profileInfo
-} from '../scripts/utils/constants.js';
+} from '../../src/utils/constants.js';
 import { data } from 'autoprefixer';
 
 
@@ -37,7 +37,7 @@ const api = new Api({
 });
 
 function creatNewCard(cardElement) {
-    const card = new Card(cardElement, templateSelector, popupImage.open, PopupDeleteCard.open, (likeElement, cardId) => {
+    const card = new Card(cardElement, templateSelector, popupImage.open, popupDeleteCard.open, (likeElement, cardId) => {
         if (likeElement.classList.contains('elements__item-like_active')) {
             api.deleteLike(cardId)
                 .then(res => {
@@ -73,9 +73,9 @@ const popupProfil = new PopupWithForm(popupEditProfileSelector, (data) => {
 popupProfil.setEventListeners();
 
 const popupAddCard = new PopupWithForm(popupAddCardSelector, (data) => {
-    Promise.all([api.getInfo(), api.addNewCard(data)])
-        .then(([dataUser, dataCard]) => {
-            dataCard.id = dataUser._id;
+    api.addNewCard(data)
+        .then(dataCard => {
+            dataCard.id = userInfo.getId();
             section.addItem(creatNewCard(dataCard))
             popupAddCard.close()
         })
@@ -95,16 +95,16 @@ const popupAvatar = new PopupWithForm(popupAvatarSelector, (data) => {
 });
 popupAvatar.setEventListeners();
 
-const PopupDeleteCard = new PopupCardDelete(PopupCardDeleteSelector, ({ card, cardId }) => {
+const popupDeleteCard = new PopupCardDelete(popupCardDeleteSelector, ({ card, cardId }) => {
     api.deleteCard(cardId)
         .then(() => {
             card.removeCardElement()
-            PopupDeleteCard.close();
+            popupDeleteCard.close();
         })
         .catch((error) => console.log(`Ошибка при удалении карточки ${error}`))
-        .finally(() => PopupDeleteCard.getSubmitButtonText())
+        .finally(() => popupDeleteCard.getSubmitButtonText())
 });
-PopupDeleteCard.setEventListeners();
+popupDeleteCard.setEventListeners();
 
 const popupImage = new PopupWithImage(popupImageSelector);
 popupImage.setEventListeners();
@@ -148,6 +148,7 @@ Promise.all([api.getInfo(), api.getCards()])
             element.id = dataUser._id
         });
         userInfo.setUserInfo({ name: dataUser.name, job: dataUser.about, avatar: dataUser.avatar });
+        userInfo.setId(dataUser._id)
         section.addInitialItems(dataCard.reverse());
     })
     .catch((error => console.log(`Ошибка при создании данных ${error}`)))

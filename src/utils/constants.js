@@ -50,7 +50,7 @@ const popupEditProfileSelector = '.popup_edit';
 const popupAddCardSelector = '.popup_add';
 const popupImageSelector = '.popup_image';
 const elementSelector = '.elements';
-const PopupCardDeleteSelector = ".popup_delete";
+const popupCardDeleteSelector = ".popup_delete";
 const popupAvatarSelector = ".popup_avatar";
 const formPopupAvatarSelector = document.querySelector('.popup__form_avatar');
 
@@ -73,7 +73,7 @@ export {
     popupAddCardSelector,
     popupImageSelector,
     elementSelector,
-    PopupCardDeleteSelector,
+    popupCardDeleteSelector,
     popupAvatarSelector,
     formPopupAvatarSelector,
     profileInfo
