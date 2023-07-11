@@ -42,7 +42,7 @@ const formPopupAddSelector = document.querySelector('.popup__form_add');
 
 const popupOpenBottonElement = document.querySelector('.profile__button-edit');
 const popupAddOpenButton = document.querySelector('.profile__button-add');
-const popupAvatarEditButton = document.querySelector('.popup__avatar-button');
+const popupAvatarEditButton = document.querySelector('.profile__avatar-button');
 
 const templateSelector = '#cardElementTemplate';
 

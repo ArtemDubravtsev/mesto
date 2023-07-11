@@ -1,4 +1,4 @@
-.popup__avatar-button {
+.profile__avatar-button {
     display: flex;
     position: relative;
     width: 120px;
@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 
-.popup__avatar-button:hover::before {
+.profile__avatar-button:hover::before {
     content: "";
     position: absolute;
     top: 0;
@@ -25,13 +25,13 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .popup__avatar-button {
+    .profile__avatar-button {
         margin-left: 40px;
     }
 }
 
 @media screen and (max-width: 767px) {
-    .popup__avatar-button {
+    .profile__avatar-button {
         margin-left: auto;
         margin-right: auto;
     }
